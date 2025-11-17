@@ -35,6 +35,39 @@ class DataHandler:
         print('Row:', args.row, ', Col:', args.col)
         print('Sparsity:', np.sum(trnT!=0) / np.reshape(trnT, [-1]).shape[0])
 
+    def euclidean_distance(a, b):
+        return np.sqrt(np.sum((a - b) ** 2, axis=1))
+
+    def knn_predict_single_feature(X, y, k=5):
+        n_samples, n_features = X.shape
+        variable_scores = {}
+
+        for j in range(n_features):
+            feature_col = X[:, j].reshape(-1, 1)
+            preds = []
+
+            for i in range(n_samples):
+            # Leave-one-out
+                X_train = np.delete(feature_col, i, axis=0)
+                y_train = np.delete(y, i, axis=0)
+                X_test = feature_col[i]
+
+            # Compute distances
+                distances = euclidean_distance(X_train, X_test)
+                nearest_idx = np.argsort(distances)[:k]
+                pred = np.mean(y_train[nearest_idx])
+                preds.append(pred)
+
+        # Mean Squared Error
+            mse = np.mean((y - np.array(preds))**2)
+            variable_scores[j] = mse
+
+    # Sort by smallest MSE (best predictive feature first)
+        sorted_vars = sorted(variable_scores.items(), key=lambda x: x[1])
+        return sorted_vars
+    
+
+
     def zScore(self, data):
         return (data - self.mean) / self.std
 
