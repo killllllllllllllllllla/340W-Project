@@ -5,9 +5,10 @@ from engine import trainer
 from Params import args
 from utils import seed_torch, makePrint
 
+
 def main():
     seed_torch()
-    device = torch.device('cuda:0')
+    device = torch.device('cpu')
     engine = trainer(device)
     print("start training...", flush=True)
     train_time = []
@@ -15,6 +16,11 @@ def main():
     eval_bestRes = dict()
     eval_bestRes['RMSE'], eval_bestRes['MAE'], eval_bestRes['MAPE'] = 1e6, 1e6, 1e6
     update = False
+
+
+
+
+    
 
     for i in range(1, args.epoch+1):
         t1 = time.time()
@@ -45,6 +51,8 @@ def main():
         t2 = time.time()
         train_time.append(t2-t1)
     print(makePrint('Best', args.epoch, bestRes))
+
+
 
 if __name__ == "__main__":
     t1 = time.time()
