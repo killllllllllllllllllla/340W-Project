@@ -1,10 +1,21 @@
 # STHSL
-A pytorch implementation for the paper:<br />
-[Spatial-Temporal Hypergraph Self-Supervised Learning for Crime Prediction](https://ieeexplore.ieee.org/document/9835423)<br />
-In ICDE 2022.
 
-## Introduction
-Spatial-Temporal Hypergraph Self-Supervised Learning for Crime Prediction (STHSL) is a spatio-temporal prediction networks. By adding self-supervised learning methods as auxiliary tasks, STHSL can tackle the label scarcity issue in crime prediction.
+## How to run this code
+Make sure that you have python 3.9.7 installed as your environment
+Open terminal and open folder --> Example: cd "C:\Users\name\OneDrive\Desktop\STHSL-main"
+Then type 
+```
+python train.py --data NYC --device cpu
+```
+or for Chicago dataset 
+```
+train.py --data CHI --device cpu
+```
+for test 
+```
+python test.py --data NYC --checkpoint ./Save/NYC/your_file_names
+python test.py --data CHI --checkpoint ./Save/NYC/your_file_name
+```
 
 ## Structure
 * Datasets: including NYC and CHI datasets used in our experiments, which are released by and available at [STSHN](https://github.com/akaxlh/ST-SHN)
@@ -18,19 +29,3 @@ The code can be run in the following environments, other version of required pac
 * numpy==1.22.3
 * pytorch==1.9.0
 
-## Run the codes 
-* NYC-Crimes dataset: Train and Test
-```
-python train.py --data NYC
-```
-```
-python test.py --data NYC --checkpoint ./Save/NYC/your_file_names
-```
-
-* Chicago-Crimes dataset: Train and Test
-```
-python train.py --data CHI
-```
-```
-python test.py --data CHI --checkpoint ./Save/CHI/your_file_names
-```
