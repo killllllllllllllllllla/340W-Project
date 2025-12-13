@@ -21,7 +21,10 @@ for test
 python test.py --data NYC --checkpoint ./Save/NYC/your_file_names
 python test.py --data CHI --checkpoint ./Save/CHI/your_file_name
 ```
-
+If you have an error run this line in test.py
+```
+device = torch.device("cpu")
+```
 ## Environment requirement
 The code can be run in the following environments, other version of required packages may also work.
 * python==3.9.7
