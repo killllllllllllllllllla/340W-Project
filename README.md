@@ -11,6 +11,10 @@ or for Chicago dataset
 ```
 train.py --data CHI --device cpu
 ```
+IF YOU GET AN ERROR ABOUT TORCH INSTALL TORCH
+```
+pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+```
 for test 
 ```
 python test.py --data NYC --checkpoint ./Save/NYC/your_file_names
