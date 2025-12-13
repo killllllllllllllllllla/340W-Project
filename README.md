@@ -11,21 +11,16 @@ or for Chicago dataset
 ```
 train.py --data CHI --device cpu
 ```
-IF YOU GET AN ERROR ABOUT TORCH INSTALL TORCH
+IF YOU GET AN ERROR ABOUT TORCH INSTALL TORCH 
 ```
 pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
 ```
+You may have to edit above depending on the computer your running the code on
 for test 
 ```
 python test.py --data NYC --checkpoint ./Save/NYC/your_file_names
-python test.py --data CHI --checkpoint ./Save/NYC/your_file_name
+python test.py --data CHI --checkpoint ./Save/CHI/your_file_name
 ```
-
-## Structure
-* Datasets: including NYC and CHI datasets used in our experiments, which are released by and available at [STSHN](https://github.com/akaxlh/ST-SHN)
-* Save: model save path，for testing
-* model: model of STHSL
-* others: files required for model training 
 
 ## Environment requirement
 The code can be run in the following environments, other version of required packages may also work.
